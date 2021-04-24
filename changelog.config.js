@@ -4,17 +4,7 @@ module.exports = {
   minMessageLength: 3,
 
   questions: ["type", "scope", "subject", "body"],
-  scopes: [
-    "common",
-    "user",
-    "event",
-    "group",
-    "finlit",
-    "community",
-    "company",
-    "feed",
-    "tools",
-  ],
+  scopes: ["app", "user", "tools"],
 
   types: [
     { emoji: "✨", value: "feat" },
