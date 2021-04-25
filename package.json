@@ -2,35 +2,6 @@
   "name": "trello-ferrum",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@accounts/client": "^0.32.0",
-    "@accounts/client-password": "^0.32.0",
-    "@accounts/rest-client": "^0.32.0",
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@reduxjs/toolkit": "^1.5.1",
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^12.20.10",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.3",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.2.4",
-    "web-vitals": "^1.1.1"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^12.1.1",
-    "concurrently": "^6.0.2",
-    "cz-customizable": "^6.3.0",
-    "git-cz": "^4.7.6",
-    "husky": "^6.0.0",
-    "lint-staged": "^10.5.4"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -66,10 +37,39 @@
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "changelog.config.js"
+      "path": "./node_modules/git-cz"
     }
+  },
+  "dependencies": {
+    "@accounts/client": "^0.32.0",
+    "@accounts/client-password": "^0.32.0",
+    "@accounts/rest-client": "^0.32.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^12.20.10",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.3",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.2.4",
+    "web-vitals": "^1.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^11.0.0",
+    "concurrently": "^6.0.2",
+    "cz-customizable": "^6.2.0",
+    "git-cz": "^4.7.6",
+    "git-revision-webpack-plugin": "^3.0.6",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "standard-version": "^9.1.0"
   }
 }
