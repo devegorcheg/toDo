@@ -4,13 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 
 // components
 import { ThemeProvider } from "@material-ui/core/styles";
-import Routes from "./Routes";
+import { Routes } from "./Routes";
 
 // utils
 import theme from "lib/material-ui";
 import { store } from "app/store";
 
-const App: React.FC = () => (
+export const App: React.FC = () => (
   <StrictMode>
     <BrowserRouter>
       <Provider store={store}>
@@ -21,5 +21,3 @@ const App: React.FC = () => (
     </BrowserRouter>
   </StrictMode>
 );
-
-export default App;

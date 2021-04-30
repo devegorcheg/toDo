@@ -17,5 +17,3 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
     />
   );
 };
-
-export default TextField;
