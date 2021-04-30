@@ -12,10 +12,13 @@ import Button from "@material-ui/core/Button";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import TextField from "ui/TextField";
+import { TextField } from "ui/TextField";
 
 // utils
 import { signup } from "../actions";
+
+// types
+import { RootState } from "app/store";
 
 const useStyles = makeStyles(({ palette }) => ({
   form: {
@@ -41,11 +44,11 @@ const validationSchema = object({
     .required(),
 });
 
-const Signup: React.FC = () => {
+export const Signup: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
-  const loggedUser = useSelector((state) => state.loggedUser);
+  const loggedUser = useSelector((state: RootState) => state.auth.loggedUser);
 
   useEffect(() => {
     if (loggedUser) {
@@ -67,6 +70,7 @@ const Signup: React.FC = () => {
       const { firstName, lastName, email, password } = data;
 
       dispatch(signup({ firstName, lastName, email, password }));
+
       setSubmitting(false);
     },
   });
@@ -123,5 +127,3 @@ const Signup: React.FC = () => {
     </Paper>
   );
 };
-
-export default Signup;
