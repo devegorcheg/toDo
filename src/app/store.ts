@@ -1,10 +1,13 @@
 import { combineReducers, configureStore, AnyAction } from "@reduxjs/toolkit";
 
+// reducers
+import { authReducer } from "features/Auth/redusers";
+
 // utils
-import { accountsPassword } from "lib/accaunts";
+import { accountsPassword } from "lib/accounts";
 
 const rootReducer = combineReducers({
-  // auth: authReducer.reducer,
+  auth: authReducer.reducer,
 });
 
 const resettableRootReducer = (state: any, action: AnyAction) => {
@@ -26,3 +29,4 @@ export const store = configureStore({
 });
 
 export type IAppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
