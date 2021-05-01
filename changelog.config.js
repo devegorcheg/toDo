@@ -1,11 +1,21 @@
 module.exports = {
   disableEmoji: false,
+  list: [
+    "feat",
+    "fix",
+    "docs",
+    "style",
+    "refactor",
+    "perf",
+    "test",
+    "chore",
+    "revert",
+    "WIP",
+  ],
   maxMessageLength: 100,
   minMessageLength: 3,
-
   questions: ["type", "scope", "subject", "body"],
-  scopes: ["app", "user", "tools"],
-
+  scopes: ["app", "common", "user", "tools"],
   types: {
     feat: {
       description: "",
@@ -58,52 +68,4 @@ module.exports = {
       value: "WIP",
     },
   },
-  // types: [
-  //   { emoji: "✨", value: "feat" },
-  //   {
-  //     description: "",
-  //     emoji: "🐛",
-  //     value: "fix",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "📝",
-  //     value: "docs",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "💄",
-  //     value: "style",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "♻️",
-  //     value: "refactor",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "🚀",
-  //     value: "perf",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "✔️",
-  //     value: "test",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "🔨",
-  //     value: "chore",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "⏪",
-  //     value: "revert",
-  //   },
-  //   {
-  //     description: "",
-  //     emoji: "🚧",
-  //     value: "WIP",
-  //   },
-  // ],
 };
