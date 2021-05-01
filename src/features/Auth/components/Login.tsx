@@ -72,7 +72,7 @@ export const Login: React.FC = () => {
   const { handleSubmit, isValid, isSubmitting } = formikCtx;
 
   return (
-    <Paper className={classes.form} elevation={3}>
+    <Paper elevation={24} className={classes.form}>
       <Box p={3}>
         <FormikProvider value={formikCtx}>
           <form onSubmit={handleSubmit}>
@@ -110,7 +110,7 @@ export const Login: React.FC = () => {
               >
                 Войти
               </Button>
-              <Link to="/register">
+              <Link to="/signup" className={classes.link}>
                 <Typography variant="body1">Регистрация</Typography>
               </Link>
             </Box>
