@@ -9,6 +9,7 @@ export const Auth: React.FC = ({ children }) => {
 
   useEffect(() => {
     dispatch(getUser());
+    // eslint-disable-next-line
   }, []);
 
   return <>{children}</>;
