@@ -1,7 +1,7 @@
 import { StrictMode, useEffect } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 // components
 import { ThemeProvider } from "@material-ui/core/styles";
