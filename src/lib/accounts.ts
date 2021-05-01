@@ -11,3 +11,4 @@ export const accountsClient = new AccountsClient({}, accountsRest);
 export const accountsPassword = new AccountsClientPassword(accountsClient);
 
 export type IAccountsPassword = typeof accountsPassword;
+export type IAccountsClient = typeof accountsClient;

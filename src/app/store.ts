@@ -4,7 +4,7 @@ import { combineReducers, configureStore, AnyAction } from "@reduxjs/toolkit";
 import { authReducer } from "features/Auth/redusers";
 
 // utils
-import { accountsPassword } from "lib/accounts";
+import { accountsPassword, accountsClient } from "lib/accounts";
 
 const rootReducer = combineReducers({
   auth: authReducer.reducer,
@@ -23,7 +23,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: {
-        extraArgument: { accountsPassword },
+        extraArgument: { accountsPassword, accountsClient },
       },
     }),
 });
