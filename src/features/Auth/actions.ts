@@ -62,4 +62,31 @@ export const login = createAsyncThunk<IUser, ILogin, ThunkAPI>(
   }
 );
 
+export const getUser = createAsyncThunk<
+  Maybe<IUser>,
+  Maybe<undefined>,
+  ThunkAPI
+>("auth/getUser", async (_, { extra: { accountsClient }, rejectWithValue }) => {
+  try {
+    // refresh the session to get a new accessToken if expired
+    const tokens = await accountsClient.refreshSession();
+
+    if (tokens) {
+      const res = await fetch("/api/user", {
+        headers: {
+          Authorization: tokens ? "Bearer " + tokens.accessToken : "",
+        },
+      });
+      const user: IUser = await res.json();
+
+      return user;
+    }
+
+    return null;
+  } catch (error) {
+    console.error(error);
+    return rejectWithValue(error.message);
+  }
+});
+
 // TODO: добавить logout

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // actions
-import { signup, login } from "./actions";
+import { signup, login, getUser } from "./actions";
 
 // types
 import { Maybe } from "models/types";
@@ -48,6 +48,21 @@ export const authReducer = createSlice({
       state.loggedUser = action.payload;
     });
     builder.addCase(login.rejected, (state) => {
+      state.loading = false;
+      state.error = "Ошибка авторизации";
+    });
+
+    // getUser
+    builder.addCase(getUser.pending, (state) => {
+      state.loading = true;
+      state.error = null;
+      state.loggedUser = null;
+    });
+    builder.addCase(getUser.fulfilled, (state, action) => {
+      state.loading = false;
+      state.loggedUser = action.payload;
+    });
+    builder.addCase(getUser.rejected, (state) => {
       state.loading = false;
       state.error = "Ошибка авторизации";
     });
