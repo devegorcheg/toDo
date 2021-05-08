@@ -76,7 +76,7 @@ export const Login: React.FC = () => {
       <Box p={3}>
         <FormikProvider value={formikCtx}>
           <form onSubmit={handleSubmit}>
-            <Box mb={1}>
+            <Box mb={3}>
               <Typography variant="h4">Вход на сайт</Typography>
             </Box>
             <Box mb={3}>
@@ -87,7 +87,7 @@ export const Login: React.FC = () => {
                 label="Электронная почта"
               />
             </Box>
-            <Box mb={3}>
+            <Box mb={6}>
               <TextField
                 required
                 fullWidth

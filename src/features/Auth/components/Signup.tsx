@@ -94,7 +94,7 @@ export const Signup: React.FC = () => {
             <Box mb={1}>
               <TextField label="E-mail" fullWidth required name="email" />
             </Box>
-            <Box mb={1}>
+            <Box mb={3}>
               <TextField
                 label="Пароль"
                 fullWidth
