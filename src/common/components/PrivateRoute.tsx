@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 // types
 import { RootState } from "app/store";
 
-export const PrivateRoute: React.FC<RouteProps> = (props) => {
+export const PrivateRoute: React.FC<RouteProps> = props => {
   const loggedUser = useSelector((state: RootState) => state.auth.loggedUser);
 
   if (!loggedUser) {
