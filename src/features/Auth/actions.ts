@@ -30,7 +30,7 @@ export const signup = createAsyncThunk<Maybe<string>, ISingup, ThunkAPI>(
       return result?.userId ?? null;
     } catch (error: any) {
       console.error(error);
-      return rejectWithValue(error.message);
+      return rejectWithValue(error);
     }
   },
 );
@@ -57,7 +57,7 @@ export const login = createAsyncThunk<IUser, ILogin, ThunkAPI>(
       return user;
     } catch (error: any) {
       console.error(error);
-      return rejectWithValue(error.message);
+      return rejectWithValue(error);
     }
   },
 );
@@ -85,8 +85,19 @@ export const getUser = createAsyncThunk<
     return null;
   } catch (error: any) {
     console.error(error);
-    return rejectWithValue(error.message);
+    return rejectWithValue(error);
   }
 });
 
-// TODO: добавить logout
+export const logout = createAsyncThunk<null, Maybe<undefined>, ThunkAPI>(
+  "auth/logout",
+  async (_, { extra: { accountsClient }, rejectWithValue }) => {
+    try {
+      await accountsClient.logout();
+    } catch (error: any) {
+      console.error(error);
+      return rejectWithValue(error);
+    }
+    return null;
+  },
+);
