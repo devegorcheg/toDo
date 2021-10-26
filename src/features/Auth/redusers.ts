@@ -23,22 +23,22 @@ export const authReducer = createSlice({
   name: "auth",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     // signup
-    builder.addCase(signup.pending, (state) => {
+    builder.addCase(signup.pending, state => {
       state.loading = true;
       state.error = null;
     });
-    builder.addCase(signup.fulfilled, (state) => {
+    builder.addCase(signup.fulfilled, state => {
       state.loading = false;
     });
-    builder.addCase(signup.rejected, (state) => {
+    builder.addCase(signup.rejected, state => {
       state.loading = false;
       state.error = "Ошибка регистрации";
     });
 
     // login
-    builder.addCase(login.pending, (state) => {
+    builder.addCase(login.pending, state => {
       state.loading = true;
       state.error = null;
       state.loggedUser = null;
@@ -47,13 +47,13 @@ export const authReducer = createSlice({
       state.loading = false;
       state.loggedUser = action.payload;
     });
-    builder.addCase(login.rejected, (state) => {
+    builder.addCase(login.rejected, state => {
       state.loading = false;
       state.error = "Ошибка авторизации";
     });
 
     // getUser
-    builder.addCase(getUser.pending, (state) => {
+    builder.addCase(getUser.pending, state => {
       state.loading = true;
       state.error = null;
       state.loggedUser = null;
@@ -62,7 +62,7 @@ export const authReducer = createSlice({
       state.loading = false;
       state.loggedUser = action.payload;
     });
-    builder.addCase(getUser.rejected, (state) => {
+    builder.addCase(getUser.rejected, state => {
       state.loading = false;
       state.error = "Ошибка авторизации";
     });
