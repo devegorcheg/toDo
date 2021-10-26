@@ -1,16 +1,6 @@
 import { Component } from "react";
 
-// import { CardMedia } from "common/components/CardCustom";
-// import { isDevelopment } from "shared/utils/env";
-
-import {
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Divider,
-} from "@material-ui/core";
+import { Box, Divider, Typography } from "@material-ui/core";
 
 interface IState {
   error: Error | null;
@@ -35,22 +25,35 @@ export default class ErrorBoundary extends Component<any, IState> {
 
     if (error) {
       return (
-        <Card>
-          <CardMedia image="images/raccoon.jpg" style={{ height: 150 }} />
-          <CardHeader>Произошла ошибка</CardHeader>
-          <CardContent>
-            К сожалению, произошла ошибка, которая не должна происходить. Мы уже
-            уведомили разработчиков и постараемся разобраться как можно скорее.
-          </CardContent>
+        <Box>
+          <Box
+            style={{
+              height: "150px",
+              background:
+                "linear-gradient(90deg, rgba(69,0,0,1) 0%, rgba(231,5,5,1) 28%, rgba(231,5,5,1) 53%, rgba(255,166,0,1) 100%)",
+            }}
+          />
+          <Box mt={2}>
+            <Typography align="center" variant="h3" gutterBottom>
+              Произошла ошибка
+            </Typography>
+          </Box>
+          <Box mb={2}>
+            <Typography align="center" gutterBottom>
+              К сожалению, произошла ошибка, которая не должна происходить. Мы
+              уже уведомили разработчиков и постараемся разобраться как можно
+              скорее.
+            </Typography>
+          </Box>
           {/* Следующая информаци не должна выводиться для обычных пользователей */}
           <Divider />
-          <CardContent>
+          <Box mx={5}>
             <p>
               <strong>{message}</strong>
             </p>
             <pre>{stack}</pre>
-          </CardContent>
-        </Card>
+          </Box>
+        </Box>
       );
     }
 
