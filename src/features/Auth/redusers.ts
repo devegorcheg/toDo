@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // actions
-import { signup, login, getUser } from "./actions";
+import { signup, login, logout, getUser } from "./actions";
 
 // types
 import { Maybe } from "models/types";
@@ -32,9 +32,10 @@ export const authReducer = createSlice({
     builder.addCase(signup.fulfilled, state => {
       state.loading = false;
     });
-    builder.addCase(signup.rejected, state => {
+    builder.addCase(signup.rejected, (state, action) => {
       state.loading = false;
-      state.error = "Ошибка регистрации";
+      state.error =
+        action?.payload ?? action.error.message ?? "Ошибка регистрации";
     });
 
     // login
@@ -47,9 +48,10 @@ export const authReducer = createSlice({
       state.loading = false;
       state.loggedUser = action.payload;
     });
-    builder.addCase(login.rejected, state => {
+    builder.addCase(login.rejected, (state, action) => {
       state.loading = false;
-      state.error = "Ошибка авторизации";
+      state.error =
+        action?.payload ?? action.error.message ?? "Ошибка авторизации";
     });
 
     // getUser
@@ -62,9 +64,21 @@ export const authReducer = createSlice({
       state.loading = false;
       state.loggedUser = action.payload;
     });
-    builder.addCase(getUser.rejected, state => {
+    builder.addCase(getUser.rejected, (state, action) => {
       state.loading = false;
-      state.error = "Ошибка авторизации";
+      state.error =
+        action?.payload ?? action.error.message ?? "Ошибка авторизации";
+    });
+
+    // loguot
+    builder.addCase(logout.fulfilled, (state, action) => {
+      state.loggedUser = action.payload;
+    });
+    builder.addCase(logout.rejected, (state, action) => {
+      state.loading = false;
+      state.error =
+        action?.payload ?? action.error.message ?? "Неизвестная ошибка";
+      console.log(action);
     });
   },
 });
