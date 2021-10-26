@@ -15,7 +15,7 @@ export const signup = createAsyncThunk<Maybe<string>, ISingup, ThunkAPI>(
   "auth/signup",
   async (
     { firstName, lastName, email, password },
-    { extra: { accountsPassword }, rejectWithValue }
+    { extra: { accountsPassword }, rejectWithValue },
   ) => {
     try {
       const result = await accountsPassword.createUser({
@@ -28,11 +28,11 @@ export const signup = createAsyncThunk<Maybe<string>, ISingup, ThunkAPI>(
       });
 
       return result?.userId ?? null;
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 interface ILogin {
@@ -44,7 +44,7 @@ export const login = createAsyncThunk<IUser, ILogin, ThunkAPI>(
   "auth/login",
   async (
     { email, password },
-    { extra: { accountsPassword }, rejectWithValue }
+    { extra: { accountsPassword }, rejectWithValue },
   ) => {
     try {
       const { user } = await accountsPassword.login({
@@ -55,11 +55,11 @@ export const login = createAsyncThunk<IUser, ILogin, ThunkAPI>(
       });
 
       return user;
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       return rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const getUser = createAsyncThunk<
@@ -83,7 +83,7 @@ export const getUser = createAsyncThunk<
     }
 
     return null;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     return rejectWithValue(error.message);
   }
