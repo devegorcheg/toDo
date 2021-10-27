@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 
 // components
-import { Button, Typography } from "@material-ui/core";
+import { Button, Typography } from "@mui/material";
 
 // utils
 import { logout } from "../../Auth/actions";

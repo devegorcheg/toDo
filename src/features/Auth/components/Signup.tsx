@@ -1,38 +1,23 @@
 import { useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useFormik, FormikProvider } from "formik";
 import { object, string } from "yup";
 import { useDispatch, useSelector } from "react-redux";
 
 // components
-import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-
-import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 import { TextField } from "ui/TextField";
+import { Link } from "ui/Link";
 
 // utils
 import { signup } from "../actions";
 
 // types
 import { RootState } from "app/store";
-
-const useStyles = makeStyles(({ palette }) => ({
-  form: {
-    width: 500,
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    transform: "translate(-50%, -50%)",
-  },
-  link: {
-    color: palette.primary.main,
-    textDecoration: "none",
-  },
-}));
 
 const validationSchema = object({
   firstName: string().min(3).max(50).required(),
@@ -45,7 +30,6 @@ const validationSchema = object({
 });
 
 export const Signup: React.FC = () => {
-  const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const loggedUser = useSelector((state: RootState) => state.auth.loggedUser);
@@ -78,7 +62,16 @@ export const Signup: React.FC = () => {
   const { handleSubmit, isValid, isSubmitting } = formikCtx;
 
   return (
-    <Paper elevation={24} className={classes.form}>
+    <Paper
+      elevation={24}
+      sx={{
+        width: 500,
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+      }}
+    >
       <Box p={4}>
         <FormikProvider value={formikCtx}>
           <form onSubmit={handleSubmit}>
@@ -117,7 +110,7 @@ export const Signup: React.FC = () => {
               >
                 Регистрация
               </Button>
-              <Link className={classes.link} to="/login">
+              <Link to="/login">
                 <Typography variant="body1">Войти</Typography>
               </Link>
             </Box>

@@ -1,19 +1,19 @@
 // components
-import { CssBaseline } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/core/styles";
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
 
 import { Routes } from "./Routes";
 import { Auth } from "features/Auth/components/Auth";
 import ErrorBoundary from "common/components/ErrorBoundary";
 
 // utils
-import theme from "lib/material-ui";
+import theme from "lib/mui";
 
 export const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Auth>
-        <CssBaseline />
         <ErrorBoundary>
           <Routes />
         </ErrorBoundary>

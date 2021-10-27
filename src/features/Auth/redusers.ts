@@ -14,7 +14,7 @@ interface IInitialState {
 }
 
 const initialState: IInitialState = {
-  loading: false,
+  loading: true,
   error: null,
   loggedUser: null,
 };
