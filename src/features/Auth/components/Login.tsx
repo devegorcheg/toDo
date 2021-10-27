@@ -20,8 +20,8 @@ import { RootState } from "app/store";
 const validationSchema = object({
   email: string().email().required(),
   password: string()
-    .min(8, "Длина пароля должна быть не менее 8 символов")
-    .max(25, "Длина пароля должна быть не более 25 символов")
+    .min(8, "Password must be at least 8 characters long")
+    .max(25, "Password length must be no more than 25 characters")
     .required(),
 });
 

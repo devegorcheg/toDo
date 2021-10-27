@@ -2,6 +2,7 @@
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 
+import { AppLayout } from "./AppLayout";
 import { Routes } from "./Routes";
 import { Auth } from "features/Auth/components/Auth";
 import ErrorBoundary from "common/components/ErrorBoundary";
@@ -15,7 +16,9 @@ export const App: React.FC = () => {
       <CssBaseline />
       <Auth>
         <ErrorBoundary>
-          <Routes />
+          <AppLayout>
+            <Routes />
+          </AppLayout>
         </ErrorBoundary>
       </Auth>
     </ThemeProvider>

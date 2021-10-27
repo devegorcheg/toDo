@@ -1,4 +1,7 @@
+// components
 import { Grid as MUIGrid, CircularProgress } from "@mui/material";
+
+// utils
 import { styled } from "@mui/material/styles";
 
 const Grid = styled(MUIGrid)(() => ({

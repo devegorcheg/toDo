@@ -22,7 +22,7 @@ const validationSchema = object({
   lastName: string().min(3).max(50).required(),
   email: string().email().required(),
   password: string()
-    .min(8, "Длина пароля должна быть не менее 8 символов")
+    .min(8, "Password must be at least 8 characters long")
     .max(25)
     .required(),
 });

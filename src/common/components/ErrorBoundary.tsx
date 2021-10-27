@@ -35,17 +35,17 @@ export default class ErrorBoundary extends Component<any, IState> {
           />
           <Box mt={2}>
             <Typography align="center" variant="h3" gutterBottom>
-              Произошла ошибка
+              Oooops! ERROR
             </Typography>
           </Box>
           <Box mb={2}>
             <Typography align="center" gutterBottom>
-              К сожалению, произошла ошибка, которая не должна происходить. Мы
-              уже уведомили разработчиков и постараемся разобраться как можно
-              скорее.
+              Sorry, an error has occurred that should not occur. We have
+              already notified the developers and will try to figure it out as
+              soon as possible.
             </Typography>
           </Box>
-          {/* Следующая информаци не должна выводиться для обычных пользователей */}
+          {/* The information below should not be displayed for ordinary users */}
           <Divider />
           <Box mx={5}>
             <p>
