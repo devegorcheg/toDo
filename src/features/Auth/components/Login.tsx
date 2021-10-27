@@ -1,38 +1,21 @@
 import { useEffect } from "react";
 import { useFormik, FormikProvider } from "formik";
 import { object, string } from "yup";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // components
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { Box, Typography, Paper, Button } from "@mui/material";
 
 import { TextField } from "ui/TextField";
+import { Link } from "ui/Link";
 
 // utils
 import { login } from "../actions";
 
 // types
 import { RootState } from "app/store";
-
-const useStyles = makeStyles(({ palette }) => ({
-  form: {
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    width: 500,
-    transform: "translate(-50%, -50%)",
-  },
-  link: {
-    color: palette.primary.main,
-    textDecoration: "none",
-  },
-}));
 
 const validationSchema = object({
   email: string().email().required(),
@@ -43,7 +26,6 @@ const validationSchema = object({
 });
 
 export const Login: React.FC = () => {
-  const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
   const loggedUser = useSelector((state: RootState) => state.auth.loggedUser);
@@ -72,7 +54,16 @@ export const Login: React.FC = () => {
   const { handleSubmit, isValid, isSubmitting } = formikCtx;
 
   return (
-    <Paper elevation={24} className={classes.form}>
+    <Paper
+      elevation={24}
+      sx={{
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        width: 500,
+        transform: "translate(-50%, -50%)",
+      }}
+    >
       <Box p={3}>
         <FormikProvider value={formikCtx}>
           <form onSubmit={handleSubmit}>
@@ -83,6 +74,7 @@ export const Login: React.FC = () => {
               <TextField
                 required
                 fullWidth
+                variant="outlined"
                 name="email"
                 label="Электронная почта"
               />
@@ -110,7 +102,7 @@ export const Login: React.FC = () => {
               >
                 Войти
               </Button>
-              <Link to="/signup" className={classes.link}>
+              <Link to="/signup">
                 <Typography variant="body1">Регистрация</Typography>
               </Link>
             </Box>

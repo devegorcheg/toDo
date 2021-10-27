@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import { Box, Divider, Typography } from "@material-ui/core";
+import { Box, Divider, Typography } from "@mui/material";
 
 interface IState {
   error: Error | null;

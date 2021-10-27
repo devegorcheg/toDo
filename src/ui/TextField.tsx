@@ -1,7 +1,7 @@
 import React from "react";
 import { useField } from "formik";
 
-import MTextField, { TextFieldProps } from "@material-ui/core/TextField";
+import MTextField, { TextFieldProps } from "@mui/material/TextField";
 
 export const TextField: React.FC<TextFieldProps> = (props) => {
   const [field, meta] = useField(props as any);
