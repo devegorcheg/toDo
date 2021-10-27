@@ -1,4 +1,4 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 // components
 import { Signup } from "features/Auth/components/Signup";
@@ -11,7 +11,10 @@ export const Routes: React.FC = () => {
     <Switch>
       <Route path="/signup" component={Signup} />
       <Route path="/login" component={Login} />
+
       <PrivateRoute exact path="/" component={RootPage} />
+
+      <Redirect to="/" />
     </Switch>
   );
 };
