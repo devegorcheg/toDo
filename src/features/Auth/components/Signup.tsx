@@ -5,13 +5,11 @@ import { object, string } from "yup";
 import { useDispatch, useSelector } from "react-redux";
 
 // components
-import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import { Box, Typography, Button } from "@mui/material";
 
 import { TextField } from "ui/TextField";
 import { Link } from "ui/Link";
+import { Wrapper } from "./Wrapper";
 
 // utils
 import { signup } from "../actions";
@@ -41,6 +39,7 @@ export const Signup: React.FC = () => {
   }, [loggedUser, history]);
 
   const formikCtx = useFormik({
+    validateOnBlur: false,
     initialValues: {
       firstName: "",
       lastName: "",
@@ -59,64 +58,55 @@ export const Signup: React.FC = () => {
     },
   });
 
-  const { handleSubmit, isValid, isSubmitting } = formikCtx;
+  const { handleSubmit, isSubmitting } = formikCtx;
 
   return (
-    <Paper
-      elevation={24}
-      sx={{
-        width: 500,
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      <Box p={4}>
-        <FormikProvider value={formikCtx}>
-          <form onSubmit={handleSubmit}>
-            <Box mb={1}>
-              <Typography variant="h4">Регистрация</Typography>
-            </Box>
-            <Box mb={1}>
-              <TextField label="Имя" fullWidth required name="firstName" />
-            </Box>
-            <Box mb={1}>
-              <TextField label="Фамилия" fullWidth required name="lastName" />
-            </Box>
-            <Box mb={1}>
-              <TextField label="E-mail" fullWidth required name="email" />
-            </Box>
-            <Box mb={3}>
-              <TextField
-                label="Пароль"
-                fullWidth
-                required
-                type="password"
-                name="password"
-              />
-            </Box>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-              mt={2}
+    <Wrapper>
+      <FormikProvider value={formikCtx}>
+        <form onSubmit={handleSubmit}>
+          <Box mb={5}>
+            <Typography align="center" variant="h4">
+              SIGN UP
+            </Typography>
+          </Box>
+          <Box mb={3}>
+            <TextField label="First name" fullWidth name="firstName" />
+          </Box>
+          <Box mb={3}>
+            <TextField label="Last name" fullWidth name="lastName" />
+          </Box>
+          <Box mb={3}>
+            <TextField label="E-mail" fullWidth name="email" />
+          </Box>
+          <Box mb={6}>
+            <TextField
+              label="Password"
+              fullWidth
+              type="password"
+              name="password"
+            />
+          </Box>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Button
+              disabled={isSubmitting}
+              color="primary"
+              variant="contained"
+              type="submit"
+              size="large"
+              sx={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              <Button
-                disabled={isSubmitting || !isValid}
-                color="primary"
-                variant="contained"
-                type="submit"
-              >
-                Регистрация
-              </Button>
-              <Link to="/login">
-                <Typography variant="body1">Войти</Typography>
-              </Link>
-            </Box>
-          </form>
-        </FormikProvider>
-      </Box>
-    </Paper>
+              SIGN UP
+            </Button>
+            <Typography variant="body1">
+              Have an account? <Link to="/login">Log In</Link>
+            </Typography>
+          </Box>
+        </form>
+      </FormikProvider>
+    </Wrapper>
   );
 };

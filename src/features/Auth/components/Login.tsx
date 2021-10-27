@@ -37,6 +37,7 @@ export const Login: React.FC = () => {
   }, [loggedUser, history]);
 
   const formikCtx = useFormik({
+    validateOnBlur: false,
     initialValues: {
       email: "",
       password: "",
@@ -59,25 +60,23 @@ export const Login: React.FC = () => {
         <form onSubmit={handleSubmit}>
           <Box mb={5}>
             <Typography align="center" variant="h4">
-              LOGIN
+              LOG IN
             </Typography>
           </Box>
           <Box mb={3}>
             <TextField
-              required
               fullWidth
               variant="outlined"
               name="email"
-              label="Электронная почта"
+              label="Email"
             />
           </Box>
           <Box mb={6}>
             <TextField
-              required
               fullWidth
               name="password"
               type="password"
-              label="Пароль"
+              label="Password"
             />
           </Box>
           <Box
@@ -93,7 +92,7 @@ export const Login: React.FC = () => {
               size="large"
               sx={{ paddingLeft: 5, paddingRight: 5 }}
             >
-              Login
+              Log In
             </Button>
             <Typography variant="body1">
               Don't have an account? <Link to="/signup">Sign Up</Link>
