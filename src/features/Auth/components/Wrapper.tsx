@@ -1,7 +1,7 @@
 // component
 import { Box, BoxProps, Container, Paper } from "@mui/material";
 
-// style
+// utils
 import { styled } from "@mui/system";
 import { deepPurple } from "@mui/material/colors";
 
