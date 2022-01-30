@@ -32,7 +32,7 @@ export const Login: React.FC = () => {
 
   useEffect(() => {
     if (loggedUser) {
-      history.push("/");
+      history.push("/boards");
     }
   }, [loggedUser, history]);
 
