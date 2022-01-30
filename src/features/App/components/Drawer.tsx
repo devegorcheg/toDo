@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 // components
 import {
@@ -37,6 +38,7 @@ interface IProps {
 
 export const Drawer: React.FC<IProps> = ({ open, handleClose }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const theme = useTheme();
 
   return (
@@ -65,13 +67,23 @@ export const Drawer: React.FC<IProps> = ({ open, handleClose }) => {
       </DrawerHeader>
       <Divider />
       <List>
-        <ListItemButton key="boards">
+        <ListItemButton
+          key="boards"
+          onClick={() => {
+            history.push("/boards");
+          }}
+        >
           <ListItemIcon>
             <AutoAwesomeMotionIcon />
           </ListItemIcon>
           <ListItemText primary="Boards" />
         </ListItemButton>
-        <ListItemButton key="home">
+        <ListItemButton
+          key="home"
+          onClick={() => {
+            history.push("/");
+          }}
+        >
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
@@ -80,7 +92,12 @@ export const Drawer: React.FC<IProps> = ({ open, handleClose }) => {
       </List>
       <Divider />
       <List>
-        <ListItemButton key="settings">
+        <ListItemButton
+          key="settings"
+          onClick={() => {
+            history.push("/settings");
+          }}
+        >
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>
